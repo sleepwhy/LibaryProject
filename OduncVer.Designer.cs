@@ -72,9 +72,9 @@
             this.labelID.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.Location = new System.Drawing.Point(38, 97);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(102, 28);
+            this.labelID.Size = new System.Drawing.Size(97, 28);
             this.labelID.TabIndex = 42;
-            this.labelID.Text = "Kitap ID:";
+            this.labelID.Text = "Book ID:";
             // 
             // label6
             // 
@@ -82,9 +82,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(218, 23);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(234, 35);
+            this.label6.Size = new System.Drawing.Size(202, 35);
             this.label6.TabIndex = 40;
-            this.label6.Text = "Kitabı Ödünç Ver";
+            this.label6.Text = "Lend the Book";
             // 
             // textBox5
             // 
@@ -122,7 +122,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 40);
             this.button1.TabIndex = 45;
-            this.button1.Text = "Ödünç Ver";
+            this.button1.Text = "Lend";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -132,9 +132,9 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(38, 204);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 28);
+            this.label1.Size = new System.Drawing.Size(143, 28);
             this.label1.TabIndex = 46;
-            this.label1.Text = "Öğr. No:";
+            this.label1.Text = "Borrower ID:";
             // 
             // textBox1
             // 
@@ -160,9 +160,9 @@
             this.label2.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(38, 248);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 28);
+            this.label2.Size = new System.Drawing.Size(170, 28);
             this.label2.TabIndex = 49;
-            this.label2.Text = "Ödünç Alınan Tarih:";
+            this.label2.Text = "Borrowed Date:";
             // 
             // OduncVer
             // 

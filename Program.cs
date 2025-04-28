@@ -16,7 +16,7 @@ namespace KutuphaneProjesi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginEkranı());
+            Application.Run(new LoginScreen());
         }
     }
 }

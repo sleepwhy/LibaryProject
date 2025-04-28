@@ -57,7 +57,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 40);
             this.button1.TabIndex = 24;
-            this.button1.Text = "Kitabı Düzenle";
+            this.button1.Text = "Edit Book";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -67,9 +67,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(271, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(198, 35);
+            this.label6.Size = new System.Drawing.Size(163, 35);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Kayıtı Düzenle";
+            this.label6.Text = "Edit Record";
             // 
             // textBox5
             // 
@@ -113,9 +113,9 @@
             this.label5.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(64, 334);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(161, 28);
+            this.label5.Size = new System.Drawing.Size(155, 28);
             this.label5.TabIndex = 18;
-            this.label5.Text = "Kitap Türü No:";
+            this.label5.Text = "Book Type No:";
             // 
             // label4
             // 
@@ -133,9 +133,9 @@
             this.label3.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(64, 249);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 28);
+            this.label3.Size = new System.Drawing.Size(183, 28);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Yazar Soyadı:";
+            this.label3.Text = "Author Surname:";
             // 
             // label2
             // 
@@ -143,9 +143,9 @@
             this.label2.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(64, 208);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 28);
+            this.label2.Size = new System.Drawing.Size(151, 28);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Yazar Adı:";
+            this.label2.Text = "Author Name:";
             // 
             // label1
             // 
@@ -153,9 +153,9 @@
             this.label1.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(64, 166);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 28);
+            this.label1.Size = new System.Drawing.Size(132, 28);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Kitap Adı:";
+            this.label1.Text = "Book Name:";
             // 
             // textBox1
             // 
@@ -172,9 +172,9 @@
             this.labelID.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelID.Location = new System.Drawing.Point(64, 88);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(102, 28);
+            this.labelID.Size = new System.Drawing.Size(97, 28);
             this.labelID.TabIndex = 25;
-            this.labelID.Text = "Kitap ID:";
+            this.labelID.Text = "Book ID:";
             // 
             // labelIDgiris
             // 
@@ -206,7 +206,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 40);
             this.button2.TabIndex = 28;
-            this.button2.Text = "Kitabı Sil";
+            this.button2.Text = "Delete Book";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -216,9 +216,9 @@
             this.label7.Font = new System.Drawing.Font("Cambria", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(475, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(95, 28);
+            this.label7.Size = new System.Drawing.Size(106, 28);
             this.label7.TabIndex = 29;
-            this.label7.Text = "(Silindi)";
+            this.label7.Text = "(Deleted)";
             this.label7.Visible = false;
             // 
             // KayitDuzenle

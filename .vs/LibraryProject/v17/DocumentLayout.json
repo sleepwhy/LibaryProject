@@ -1,0 +1,57 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{82427403-3A8A-4F56-9E23-DCBD77048C86}|KutuphaneProjesi.csproj|c:\\users\\why\\source\\projeler\\kutuphaneprojesi\\loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{82427403-3A8A-4F56-9E23-DCBD77048C86}|KutuphaneProjesi.csproj|solutionrelative:loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82427403-3A8A-4F56-9E23-DCBD77048C86}|KutuphaneProjesi.csproj|C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{82427403-3A8A-4F56-9E23-DCBD77048C86}|KutuphaneProjesi.csproj|solutionrelative:loginscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginScreen.cs",
+              "DocumentMoniker": "C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\LoginScreen.cs",
+              "RelativeDocumentMoniker": "LoginScreen.cs",
+              "ToolTip": "C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\LoginScreen.cs",
+              "RelativeToolTip": "LoginScreen.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAIAwwBoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T08:27:35.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginScreen.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\LoginScreen.cs",
+              "RelativeDocumentMoniker": "LoginScreen.cs",
+              "ToolTip": "C:\\Users\\why\\source\\projeler\\KutuphaneProjesi\\LoginScreen.cs [Design]",
+              "RelativeToolTip": "LoginScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T08:26:20.859Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

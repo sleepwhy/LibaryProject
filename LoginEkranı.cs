@@ -66,16 +66,16 @@ namespace KutuphaneProjesi
                     baglanti.Open();
                 }
 
-                string query = "SELECT Sifre FROM TableKutuphaneYoneticileri WHERE KullaniciAdi = @p1";
+                string query = "SELECT Password FROM TableLibaryAdmins WHERE Username = @p1";
                 SqlCommand sqlCommand = new SqlCommand(query, baglanti);
                 sqlCommand.Parameters.AddWithValue("@p1", textBox1.Text);
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
 
                 if (reader.Read()) {
-                    if(textBox2.Text == reader["Sifre"].ToString())
+                    if(textBox2.Text == reader["Password"].ToString())
                     {
-                        label4.Text = "Sifre Doğru giriş yapılıyor...";
+                        label4.Text = "Password is correct, logging in...";
                         
                         using (AnaEkran girisYapildi = new AnaEkran()) {
                             this.Hide();
@@ -84,7 +84,7 @@ namespace KutuphaneProjesi
                     }
                     else
                     {
-                        label4.Text = "Hatalı şifre veya kullanıcı adı!";
+                        label4.Text = "Incorrect password or username!";
                         baglanti.Close();
                         await Task.Delay(2000);
                         label4.Text = "";
@@ -92,7 +92,7 @@ namespace KutuphaneProjesi
                 }
                 else
                 {
-                    label4.Text = "Hatalı şifre veya kullanıcı adı!";
+                    label4.Text = "Incorrect password or username!";
                     baglanti.Close();
                     await Task.Delay(2000);
                     label4.Text = "";
@@ -101,7 +101,7 @@ namespace KutuphaneProjesi
             }
             catch (Exception ex) 
             {
-                MessageBox.Show("Bağlantı Hatası!1" + ex.Message);
+                MessageBox.Show("Connection Error!" + ex.Message);
             }
             finally
             {

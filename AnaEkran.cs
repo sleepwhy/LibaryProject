@@ -17,7 +17,7 @@ namespace KutuphaneProjesi
     {
         SqlConnection baglanti = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=DbWhyKutuphane;Integrated Security=True;");
 
-        public bool siyahTemaAcikMi = true;
+        public bool siyahTemaAcikMi = false;
 
         private bool aramaMenusuKapali = true;
         public AnaEkran()
@@ -26,7 +26,7 @@ namespace KutuphaneProjesi
             label2.ForeColor = Color.Red;
             ThemeHelper.TemaUygula(this, siyahTemaAcikMi);
             label14.Top = 275;
-            label15.Top = 320;
+
         }
 
 
@@ -56,19 +56,19 @@ namespace KutuphaneProjesi
                 if (aramaMenusuKapali)
                 {
 
-                    string query = "SELECT * FROM TableKitaplar";
+                    string query = "SELECT * FROM TableBooks";
                     dataAdapter = new SqlDataAdapter(query, baglanti);
                 }
                 else if(textBox1.Text.Length == 0 && textBox2.Text.Length == 0 && textBox3.Text.Length == 0 && textBox4.Text.Length == 0 && textBox5.Text.Length == 0) {
-                    string query = "SELECT * FROM TableKitaplar";
+                    string query = "SELECT * FROM TableBooks";
                     dataAdapter = new SqlDataAdapter(query, baglanti);
                 }
                 else
                 {
 
-                    string query = "SELECT * FROM TableKitaplar WHERE " +
-                                   "ID LIKE @p1 OR KitapAdi LIKE @p2 OR " +
-                                   "YazarAdi LIKE @p3 OR YazarSoyadi LIKE @p4 OR ISBN LIKE @p5";
+                    string query = "SELECT * FROM TableBooks WHERE " +
+                                   "ID LIKE @p1 OR BookName LIKE @p2 OR " +
+                                   "AuthorName LIKE @p3 OR AuthorSurname LIKE @p4 OR ISBN LIKE @p5";
 
 
                     string p1, p2, p3, p4, p5;
@@ -109,7 +109,7 @@ namespace KutuphaneProjesi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
             finally
             {
@@ -141,7 +141,7 @@ namespace KutuphaneProjesi
         {
             int secilenSatir = dataGridView1.SelectedCells[0].RowIndex;
             string secilenID = dataGridView1.Rows[secilenSatir].Cells[0].Value?.ToString();
-            label2.Text = "Seçilen ID:" + secilenID;
+            label2.Text = "Selected ID:" + secilenID;
             label2.ForeColor = Color.Green;
             return secilenID;
         }
@@ -218,7 +218,7 @@ namespace KutuphaneProjesi
                     baglanti.Open();
                 }
 
-                string query = "SELECT Durum FROM TableKitaplar WHERE ID = @p1";
+                string query = "SELECT Situation FROM TableBooks WHERE ID = @p1";
                 SqlCommand sqlCommand = new SqlCommand(query, baglanti);
                 sqlCommand.Parameters.Add("@p1", SqlDbType.VarChar).Value = secilenKontrol();
 
@@ -226,14 +226,14 @@ namespace KutuphaneProjesi
                 bool durum;
                 if (reader.Read())
                 {
-                    durum = Convert.ToBoolean(reader["Durum"]);
+                    durum = Convert.ToBoolean(reader["Situation"]);
                 }
                 else
                 {
                     durum = false;
                 }
                 if (!durum) {
-                    using (Iade iade = new Iade(secilenKontrol(), this))
+                    using (Refund iade = new Refund(secilenKontrol(), this))
                     {
                         reader.Close();
                         iade.ShowDialog();
@@ -243,7 +243,7 @@ namespace KutuphaneProjesi
                 else
                 {
                     label1.Visible = true;
-                    label1.Text = "Bu kitap ödünç alınmamış!";
+                    label1.Text = "This book has not been borrowed!";
                     await Task.Delay(2000);
                     label1.Visible = false;
                 }
@@ -275,7 +275,7 @@ namespace KutuphaneProjesi
                         baglanti.Open();
                     }
 
-                    string query = "SELECT COUNT(*) FROM TableKitaplar";
+                    string query = "SELECT COUNT(*) FROM TableBooks";
                     SqlCommand sqlCommand = new SqlCommand(query, baglanti);
 
                     int toplamSatirSayisi = (int)sqlCommand.ExecuteScalar();
@@ -283,7 +283,7 @@ namespace KutuphaneProjesi
                     label4.Text = toplamSatirSayisi.ToString();
 
 
-                        query = "SELECT COUNT(*) FROM TableKitaplar WHERE Durum = 0";
+                        query = "SELECT COUNT(*) FROM TableBooks WHERE Situation = 0";
                         sqlCommand.CommandText = query;
 
                         int durumSayisi = (int)sqlCommand.ExecuteScalar();
@@ -297,7 +297,7 @@ namespace KutuphaneProjesi
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show("Hata" + ex.Message);
+                    MessageBox.Show("Error" + ex.Message);
 
 
                 }
@@ -332,15 +332,12 @@ namespace KutuphaneProjesi
             siyahTemaAcikMi = !siyahTemaAcikMi;
             if (!siyahTemaAcikMi)
             {
-                pictureBox1.Image = Image.FromFile("C:\\Users\\why!\\Desktop\\ayndinlik.png");
                 ThemeHelper.TemaUygula(this, siyahTemaAcikMi);
-
                 label2.BackColor = SystemColors.Window;
 
             }
             else
             {
-                pictureBox1.Image = Image.FromFile("C:\\Users\\why!\\Desktop\\karanlik.png");
                 BackColor = Color.Black;
                 ThemeHelper.TemaUygula(this, siyahTemaAcikMi);
                 label2.BackColor = Color.Black;
@@ -376,6 +373,7 @@ namespace KutuphaneProjesi
 
             groupBox1.Top = aramaMenusuKapali ? 256 : 400;
             label14.Visible = aramaMenusuKapali ? false : true;
+            label15.Top += aramaMenusuKapali ? -100 : 100;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -401,6 +399,11 @@ namespace KutuphaneProjesi
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             kitapVerileriniGoster();
+        }
+
+        private void AnaEkran_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

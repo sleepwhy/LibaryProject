@@ -39,18 +39,18 @@ namespace KutuphaneProjesi
                     baglanti.Open();
                 }
 
-                string query = "SELECT * FROM TableKitaplar WHERE ID = @id";
+                string query = "SELECT * FROM TableBooks WHERE ID = @id";
                 SqlCommand sqlCommand = new SqlCommand(query, baglanti);
                 sqlCommand.Parameters.AddWithValue("@id", alinanId);
 
                 using(SqlDataReader reader = sqlCommand.ExecuteReader()) 
                 {
                     if (reader.Read()) {
-                        string kitapAdi = reader["KitapAdi"].ToString();
-                        string yazarAdi = reader["YazarAdi"].ToString();
-                        string yazarSoyadi = reader["YazarSoyadi"].ToString();
+                        string kitapAdi = reader["BookName"].ToString();
+                        string yazarAdi = reader["AuthorName"].ToString();
+                        string yazarSoyadi = reader["AuthorSurname"].ToString();
                         string Isbn = reader["ISBN"].ToString();
-                        int kitapTurKodu = reader.GetInt32(reader.GetOrdinal("KitapTurKodu"));
+                        int kitapTurKodu = reader.GetInt32(reader.GetOrdinal("BookTypeNo"));
 
 
                         textBox1.Text = kitapAdi;
@@ -68,7 +68,7 @@ namespace KutuphaneProjesi
             catch (Exception ex)
             {
 
-                MessageBox.Show("Bağlantı Hatası!" + ex.Message);
+                MessageBox.Show("Connection Error!" + ex.Message);
 
             }
             finally {
@@ -119,12 +119,12 @@ namespace KutuphaneProjesi
         {
             if (Convert.ToInt32(textBox5.Text) < 0 || Convert.ToInt32(textBox5.Text) > 255)
             {
-                textBox5.Text = "Geçersiz Tür Numarası";
+                textBox5.Text = "Invalid Type Number";
                 textBox5.BackColor = Color.Red;
                 return false;
             }
 
-            string query = "SELECT KitapTurKodu FROM TableKitapTurleri WHERE KitapTurKodu = @p1";
+            string query = "SELECT TypeID FROM TableBookTypes WHERE TypeID = @p1";
             SqlCommand sqlCommand = new SqlCommand(query, baglanti);
             sqlCommand.Parameters.AddWithValue("@p1", textBox5.Text);
 
@@ -144,14 +144,14 @@ namespace KutuphaneProjesi
                 }
                 else
                 {
-                    textBox5.Text = "Tür Numarası Mevcut Değil";
+                    textBox5.Text = "Type Number Not Available";
                     textBox5.BackColor = Color.Red;
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
                 return false;
             }
             finally
@@ -165,7 +165,7 @@ namespace KutuphaneProjesi
 
         private bool isbnMevcutMu()
         {
-            string query = "SELECT ISBN FROM TableKitaplar WHERE ISBN = @p1";
+            string query = "SELECT ISBN FROM TableBooks WHERE ISBN = @p1";
 
 
             SqlCommand sqlCommand = new SqlCommand(query, baglanti);
@@ -196,7 +196,7 @@ namespace KutuphaneProjesi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hata: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
                 return false;
             }
             finally
@@ -237,8 +237,8 @@ namespace KutuphaneProjesi
                     baglanti.Open();
                 }
 
-                string query = "UPDATE TableKitaplar SET " +
-            "KitapAdi = @kitapAdi, YazarAdi = @yazarAdi, YazarSoyadi = @yazarSoyadi, ISBN = @isbn, KitapTurKodu = @kitapTurKodu " +
+                string query = "UPDATE TableBooks SET " +
+            "BookName = @kitapAdi, AuthorName = @yazarAdi, AuthorSurname = @yazarSoyadi, ISBN = @isbn, BookTypeNo = @kitapTurKodu " +
             "WHERE ID = @id";
 
             SqlCommand sqlCommand = new SqlCommand(query, baglanti);
@@ -253,10 +253,10 @@ namespace KutuphaneProjesi
             sqlCommand.ExecuteNonQuery();
 
                 button1.ForeColor = Color.Green;
-                button1.Text = "Kaydedildi";
+                button1.Text = "Saved";
                 anaEkran.kitapVerileriniGoster();
                 await Task.Delay(1500);
-                button1.Text = "Kitabı Düzenle";
+                button1.Text = "Edit Book";
                 textBox1.BackColor = default;
                 textBox2.BackColor = default;
                 textBox3.BackColor = default;
@@ -267,7 +267,7 @@ namespace KutuphaneProjesi
 
             }
             catch (Exception ex) {
-            MessageBox.Show("Hata Oluştu!" + ex.Message);
+            MessageBox.Show("Error!" + ex.Message);
             }
             finally
             {
@@ -283,13 +283,13 @@ namespace KutuphaneProjesi
             {
                 baglanti.Open();
 
-                string query = "DELETE FROM TableKitaplar WHERE ISBN = @p1";
+                string query = "DELETE FROM TableBooks WHERE ISBN = @p1";
 
                 SqlCommand sqlCommand = new SqlCommand(query, baglanti);
                 sqlCommand.Parameters.AddWithValue("@p1", alinanIsbn);
                 sqlCommand.ExecuteNonQuery();
 
-                MessageBox.Show(alinanIsbn + " ISBN'li kitap başarıyla silindi.");
+                MessageBox.Show("Book(ISBN: " + alinanIsbn + " ) was deleted successfully.");
 
                 textBox1.ReadOnly = true;
                 textBox2.ReadOnly = true;
@@ -298,7 +298,7 @@ namespace KutuphaneProjesi
                 textBox5.ReadOnly = true;
 
                 button2.ForeColor = Color.Red;
-                button2.Text = "Silindi";
+                button2.Text = "Deleted!";
                 anaEkran.kitapVerileriniGoster();
                 button1.Enabled = false;
                 button2.Enabled = false;
@@ -309,7 +309,7 @@ namespace KutuphaneProjesi
             }
             catch (Exception ex) {
 
-                MessageBox.Show("Sorun Oluştu!" + ex.Message);
+                MessageBox.Show("Error!" + ex.Message);
             }
             finally
             {
@@ -326,19 +326,19 @@ namespace KutuphaneProjesi
             bool isbnHatasi = false;
             bool kitapTuruHatasi = false;
 
-            ValidateTextBox(textBox1, ref kitapAdiHatasi, "Kitap Adı Boş Olamaz");
-            ValidateTextBox(textBox2, ref yazarAdiHatasi, "Yazar Adı Boş Olamaz");
-            ValidateTextBox(textBox3, ref yazarSoyadHatasi, "Yazar Soyadı Boş Olamaz");
-            ValidateTextBox(textBox4, ref isbnHatasi, "ISBN Numarası Boş Olamaz");
-            ValidateTextBox(textBox5, ref kitapTuruHatasi, "Kitap Türü Boş Olamaz");
+            ValidateTextBox(textBox1, ref kitapAdiHatasi, "Book Title Cannot Be Empty");
+            ValidateTextBox(textBox2, ref yazarAdiHatasi, "Author Name Cannot Be Empty");
+            ValidateTextBox(textBox3, ref yazarSoyadHatasi, "Author Surname Cannot Be Empty");
+            ValidateTextBox(textBox4, ref isbnHatasi, "ISBN Number Cannot Be Empty");
+            ValidateTextBox(textBox5, ref kitapTuruHatasi, "Book Type Cannot Be Empty");
 
             if (!isbnHatasi)
             {
-                SayiGirisiKontrolu(textBox4, ref isbnHatasi, "ISBN Numarası Harf Olamaz");
+                SayiGirisiKontrolu(textBox4, ref isbnHatasi, "ISBN Number Cannot Be Letters");
             }
             if (!kitapTuruHatasi)
             {
-                SayiGirisiKontrolu(textBox5, ref kitapTuruHatasi, "Kitap Türü Harf Olamaz");
+                SayiGirisiKontrolu(textBox5, ref kitapTuruHatasi, "Book Type Cannot Be Letter");
             }
 
 
@@ -352,13 +352,13 @@ namespace KutuphaneProjesi
             {
                 if (isbnMevcutMu())
                 {
-                    textBox4.Text = "Bu ISBN Zaten Kayıtlı";
+                    textBox4.Text = "This ISBN is already registered";
                     isbnHatasi = true;
                     textBox4.BackColor = Color.Red;
                 }
                 else if (textBox4.Text.Length != 10 && textBox4.Text.Length != 13 && textBox4.Text.Length !=12)
                 {
-                    textBox4.Text = "Lütfen 10, 12 veya 13 hane giriniz";
+                    textBox4.Text = "Please enter 10, 12 or 13 digits";
                     isbnHatasi = true;
                     textBox4.BackColor = Color.Red;
                 }
@@ -388,39 +388,39 @@ namespace KutuphaneProjesi
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            hataMesajiMi(textBox1, "Kitap Adı Boş Olamaz");
+            hataMesajiMi(textBox1, "Book Title Cannot Be Empty");
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
-            hataMesajiMi(textBox2, "Yazar Adı Boş Olamaz");
+            hataMesajiMi(textBox2, "Author Name Cannot Be Empty");
         }
 
         private void textBox3_Click(object sender, EventArgs e)
         {
-            hataMesajiMi(textBox3, "Yazar Soyadı Boş Olamaz");
+            hataMesajiMi(textBox3, "Author Surname Cannot Be Empty");
         }
 
         private void textBox4_Click(object sender, EventArgs e)
         {
-            hataMesajiMi(textBox4, "ISBN Numarası Boş Olamaz");
-            hataMesajiMi(textBox4, "ISBN Numarası Harf Olamaz");
-            hataMesajiMi(textBox4, "Bu ISBN Zaten Kayıtlı");
-            hataMesajiMi(textBox4, "Lütfen 10 veya 13 hane giriniz");
+            hataMesajiMi(textBox4, "ISBN Number Cannot Be Empty");
+            hataMesajiMi(textBox4, "ISBN Number Cannot Be Letters");
+            hataMesajiMi(textBox4, "This ISBN is already registered");
+            hataMesajiMi(textBox4, "Please enter 10 or 13 digits");
         }
 
         private void textBox5_Click(object sender, EventArgs e)
         {
-            hataMesajiMi(textBox5, "Kitap Türü Boş Olamaz");
-            hataMesajiMi(textBox5, "Kitap Türü Harf Olamaz");
-            hataMesajiMi(textBox5, "Tür Numarası Mevcut Değil");
-            hataMesajiMi(textBox5, "Geçersiz Tür Numarası");
+            hataMesajiMi(textBox5, "Book Type Cannot Be Empty");
+            hataMesajiMi(textBox5, "Book Type Cannot Be Letter");
+            hataMesajiMi(textBox5, "Type Number Not Available");
+            hataMesajiMi(textBox5, "Invalid Type Number");
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show( alinanIsbn + "ISBN'li Kitabı silmek istediğinize emin misiniz?", "Silme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to delete the book with ISBN"+ alinanIsbn, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {

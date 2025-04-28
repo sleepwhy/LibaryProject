@@ -44,19 +44,19 @@
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(170, 193);
+            this.button1.Location = new System.Drawing.Point(170, 200);
             this.button1.Margin = new System.Windows.Forms.Padding(20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 33);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Giriş Yap";
+            this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_ClickAsync);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(170, 78);
+            this.textBox1.Location = new System.Drawing.Point(170, 81);
             this.textBox1.Margin = new System.Windows.Forms.Padding(20);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 29);
@@ -65,7 +65,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(170, 141);
+            this.textBox2.Location = new System.Drawing.Point(170, 136);
             this.textBox2.Margin = new System.Windows.Forms.Padding(20);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 29);
@@ -76,29 +76,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 83);
+            this.label1.Location = new System.Drawing.Point(44, 83);
             this.label1.Margin = new System.Windows.Forms.Padding(20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 24);
+            this.label1.Size = new System.Drawing.Size(110, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Kullanıcı Adı:";
+            this.label1.Text = "User Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(85, 144);
+            this.label2.Location = new System.Drawing.Point(48, 139);
             this.label2.Margin = new System.Windows.Forms.Padding(20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 24);
+            this.label2.Size = new System.Drawing.Size(102, 24);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Parola:";
+            this.label2.Text = "Password: ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(274, 141);
+            this.pictureBox1.Location = new System.Drawing.Point(274, 136);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(27, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -112,11 +112,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 16);
+            this.label3.Location = new System.Drawing.Point(62, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(280, 25);
+            this.label3.Size = new System.Drawing.Size(257, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Gelişmiş Kütüphane Sistemi";
+            this.label3.Text = "Advanced Library System";
             // 
             // label4
             // 
@@ -142,7 +142,7 @@
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginEkranı";
-            this.Text = "whayyyy Kütüphane Sistemi";
+            this.Text = "Libary System";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

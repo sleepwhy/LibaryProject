@@ -65,7 +65,7 @@ namespace KutuphaneProjesi
                     baglanti.Open();
                 }
 
-                string query = "SELECT Durum FROM TableKitaplar WHERE ID = @p1";
+                string query = "SELECT Situation FROM TableBooks WHERE ID = @p1";
 
                 SqlCommand sqlCommand = new SqlCommand(query, baglanti);
                 sqlCommand.Parameters.AddWithValue("@p1", alinanID);
@@ -74,7 +74,7 @@ namespace KutuphaneProjesi
                 {
                     if (reader.Read())
                     {
-                        bool durum = Convert.ToBoolean(reader["Durum"]);
+                        bool durum = Convert.ToBoolean(reader["Situation"]);
                         return durum;
 
                     }
@@ -87,7 +87,7 @@ namespace KutuphaneProjesi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Bağlantı Hatası" + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
                 return true;
             }
             finally
@@ -108,7 +108,7 @@ namespace KutuphaneProjesi
                         baglanti.Open();
                     }
 
-                    string query = "UPDATE TableKitaplar SET OduncAlan = @p1, OduncAlmaTarihi = @p2, Durum = @p3 WHERE ID = @p4";
+                    string query = "UPDATE TableBooks SET Borrower = @p1, BorrowingDate = @p2, Situation = @p3 WHERE ID = @p4";
                     SqlCommand sqlCommand = new SqlCommand( query, baglanti);
                     sqlCommand.Parameters.AddWithValue("@p1", textBox1.Text);
                     sqlCommand.Parameters.Add("@p2", SqlDbType.Date).Value = dateTimePicker1.Value;
@@ -117,18 +117,18 @@ namespace KutuphaneProjesi
 
                     sqlCommand.ExecuteNonQuery();
 
-                    button1.Text = "Başarılı";
+                    button1.Text = "Success!";
                     button1.ForeColor = Color.Green;
                     anaEkran.kitapVerileriniGoster();
                     await Task.Delay(2000);
-                    button1.Text = "Ödünç Ver";
+                    button1.Text = "Lend";
                     button1.ForeColor = default;
                     
 
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Baglantı hatası" + ex.Message);
+                    MessageBox.Show("Error:" + ex.Message);
                 }
                 finally
                 {
@@ -140,12 +140,12 @@ namespace KutuphaneProjesi
             else
             {
                 if (!sayiGirisiMi()) {
-                    textBox1.Text = "Lütfen sadece rakam girin";
+                    textBox1.Text = "Please enter only numbers";
                     textBox1.BackColor = Color.Red;
                 }
                 else if (!kitapKutuphanedeMi())
                 {
-                    textBox1.Text = "Seçtiğiniz kitap kütüphanede yok";
+                    textBox1.Text = "The selected book is not available in the library";
                     textBox1.BackColor = Color.Red;
                 }
 
@@ -155,12 +155,11 @@ namespace KutuphaneProjesi
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Lütfen sadece rakam girin" || textBox1.Text == "Seçtiğiniz kitap kütüphanede yok")
+            if (textBox1.Text == "Please enter only numbers" || textBox1.Text == "The selected book is not available in the library")
             {
                 textBox1.Clear();
                 textBox1.BackColor = default;
             }
-
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
